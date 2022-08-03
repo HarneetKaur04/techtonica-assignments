@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+}    
+
+body {
+    background-color:rgb(233, 213, 229);
+}
+
+/* Style the header */
+.header {
+    background-color: #d68ce5;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid purple;
+    word-spacing: 5pt;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: overline underline;
+}
+
+/* Style the top navigation bar */
+.navigator {
+    background-color: rgb(94, 87, 217);
+    display: block;
+    overflow: hidden;
+
+}
+
+/* Change color on hover */
+.navigator a:hover {
+    color: rgb(181, 96, 96);
+}
+
+.navigator a, input{
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    margin: 1%;
+}
+.center {
+    text-align: center;
+    border: 3px solid rgb(156, 180, 156);
+}
+.center img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px dotted plum;
+    opacity: 0.5;
+}
+    
+.center img:hover {
+        opacity: 1.0;
+    }
+
+.row {
+    display: block;
+}
+/*styling columns*/
+.column {
+    border:2px dotted plum;
+    float: left;
+    width: 50%;
+    padding: 2px; 
+}
+h2 {
+    font-family:cursive;
+}
+
+
