@@ -47,9 +47,5 @@ secret_ingredient.addEventListener("click", function() {
 //   }
 // // }
 
-function haha() {
- return "haha"
-}
 
-let lol = "lol"
 
