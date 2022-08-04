@@ -47,5 +47,24 @@ secret_ingredient.addEventListener("click", function() {
 //   }
 // // }
 
+function myFunction() {
+  let text;
+  let favIcecream= prompt("Do you like ice-creams? (Choose from: Hell Yeah, yes, hmmm)", "Hell Yeah");
+  switch(favIcecream) {
+    case "Hell Yeah":
+      text = "Excellent choice. Ice-cream is good for your soul.";
+      break;
+    case "yes":
+      text = "Excellent choice.!";
+      break;
+    case "hmmm":
+      text = "Just hmmm????";
+      break;
+    default:
+      text = "Are you sure??";
+  }
+  document.getElementById("tryit").innerHTML = text;
+}
+
 
 

@@ -3,12 +3,12 @@
 }    
 
 body {
-    background-color:rgb(233, 213, 229);
+    background-color:rgb(241, 233, 239);
 }
 
 /* Style the header */
 .header {
-    background-color: #d68ce5;
+    background-color: #e7cbed;
     padding: 14px 16px;
     text-align: center;
     border: 1px solid purple;
@@ -19,7 +19,7 @@ body {
 
 @media screen and (max-width: 900px) and (min-width: 600px), (min-width: 1100px)  {
     body {
-        background-color: rgb(239, 181, 192);
+        background-color: rgb(239, 203, 209);
     }
 }
 
@@ -101,14 +101,14 @@ h2 {
 }
 
 .button {
-    background: gray;
+    background: rgb(203, 203, 203);
     display: block;
     width: 10%;
     border: solid rgb(4, 4, 21);
     transition: width
 }
 .button:hover{
-    background:rgb(181, 96, 96)
+    background:rgb(179, 73, 73)
 }
 
 
