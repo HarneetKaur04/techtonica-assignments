@@ -1,10 +1,6 @@
 let like_button = document.createElement("btn");
 like_button.innerHTML = "Like"
-like_button.style.background = "gray"
-like_button.style.display= "block"
-like_button.style.width= "10%"
-like_button.style.border= "solid blue"
-like_button.style.transition = "width"
+like_button.classList.add("button")
 
 document.querySelector(".header").appendChild(like_button)
 like_button.onclick = function (){
