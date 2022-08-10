@@ -37,7 +37,7 @@ document.getElementById("skills").appendChild(skills_list)
 function skillsAdd(arr){
     for (let i=0; i< arr.length; i++){
         let listOfSkills = document.createElement("div")
-        listOfSkills.innerHTML = arr[i]
+        listOfSkills.innerHTML = arr[i] 
         listOfSkills.classList.add("skillstyle")
         skills_list.appendChild(listOfSkills)
     }
