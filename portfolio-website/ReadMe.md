@@ -1,4 +1,4 @@
-**Introduction
+# Introduction
 >This is a portfolio webpage which entails my professional information. Using tools such as HTML, CSS, Javascript, Bootstrap I have created a portfolio webpage which list down my contact information, work experience, skills, and education.
 
 ## Table of Contents
