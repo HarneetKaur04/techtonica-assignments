@@ -57,3 +57,6 @@ function educationAdd(arr){
     }
 }
 educationAdd(["Bachelors in Commerce", "CPA"])
+
+
+
