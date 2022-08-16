@@ -37,24 +37,29 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <h3 class="feature-title">Numbers: 0 - 10</h3>
-                    <img src="https://www.freecodecamp.org/news/content/images/2021/06/w-qjCHPZbeXCQ-unsplash.jpg" class="img-fluid" alt="range1">
+                    <img src="https://www.freecodecamp.org/news/content/images/2021/06/w-qjCHPZbeXCQ-unsplash.jpg" class="img-fluid" alt="range1" id="range1">
                 </div>
                 
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <h3 class="feature-title">Numbers: 11 - 20</h3>
-                    <img src="https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171__480.jpg" class="img-fluid" alt="range2">
+                    <img src="https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171__480.jpg" class="img-fluid" alt="range2" id="range2">
                 </div>
 
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <h3 class="feature-title">Numbers: 21 - 30</h3>
-                    <img src="https://thumbs.dreamstime.com/b/flat-lay-wooden-colorful-numbers-background-top-view-abstraction-multicolor-zero-to-nine-texture-mathematic-topic-back-189696087.jpg" class="img-fluid" alt="range3">
+                    <img src="https://thumbs.dreamstime.com/b/flat-lay-wooden-colorful-numbers-background-top-view-abstraction-multicolor-zero-to-nine-texture-mathematic-topic-back-189696087.jpg" class="img-fluid" alt="range3" id="range3">
                 </div>
             </div>
-            <div>
-            <h3 class="name">Can you guess the secret number ?</h3>  
-            <input type="text" id="areafill1" name="name" required> <br>         
-            <input type="submit" id="areafill2" name="name"  >
-            <p id="errormessage"></p>
+            <div class="row2">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h3 class="name">Can you guess the secret number ?</h3>  
+                    <input type="text" id="userinput" name="text" required> 
+                </div><br>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <input type="submit" id="submit" name="submit"  >
+                    <p id="errormessage"></p>
+                </div>
+            </div>
                 
             
         </div>    
@@ -69,7 +74,7 @@
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-12">
-                <h3 class="feature-title">Already Guessed Numbers : <span id="alreadyguessednumbers"></span></h3>
+                <h3 class="feature-title">Already Guessed Numbers : <span id="alreadyguessednumbers">0</span></h3>
             </div>
         </div>
         

@@ -44,13 +44,21 @@ body {
 	transform: translate(-50%, -55%);
 	text-align: center;
 }
+
+.description .row2{
+	position: relative;
+	margin: 2%;
+	text-align: center;
+
+}
 .description h1 {
 	color: #6ab446;
 }
 .description p {
-	color: #fff;
+	color: rgb(4, 1, 25);
 	font-size: 1.3rem;
 	line-height: 1.5;
+ 
 }
 
 .description img {
@@ -70,6 +78,7 @@ body {
     color: #8b76bc;
     font-style:italic;
     line-height: 1.5;
+    margin: 1%;
     
 }
 
@@ -90,55 +99,18 @@ body {
 	margin-bottom: 20px;
 	text-transform: uppercase;
 }
-.features img {
+/* .features img {
 	-webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 	-moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 	margin-bottom: 16px;
-}
+} */
 
 .img-fluid {
     height: 70%;
 }
 
-.features .form-control,
-.features input {
-	border-radius: 0;
-}
-.features .btn {
-    background-color: #589b37;
-    border: 1px solid #589b37;
-    color: #fff;
-    margin-top: 20px;
-}
-.features .btn:hover {
-    background-color: #333;
-    border: 1px solid #333;
-}
 
-.background {
-	background: #dedec8;
-	padding: 4em 0;
-}
-.team {
-	color: #5e5e55;
-	padding: 0 180px;
-}
-.team .card-columns {
-	-webkit-column-count: 4;
-	-moz-column-count: 4;
-	column-count: 4;
-}
-.team .card {
-	background:none;
-	border: none;
-    display: inline-block;
-}
-.team .card-title {
-	font-size: 1.3rem;
-	margin-bottom: 0;
-	text-transform: uppercase;
-}
 
 .page-footer {
     background-color: #222;
