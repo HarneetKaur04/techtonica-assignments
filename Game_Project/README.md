@@ -3,6 +3,18 @@ Guess my secret number is designed to let user play around with numbers and see 
 
 ## Demo
 
+- On welcome page, select the input range for secret number by clicking on desired image
+![Screen Shot 2022-08-16 at 6 06 57 PM](https://user-images.githubusercontent.com/106197400/185012984-7eb32c11-6183-400e-a35a-6ee455f30acf.png)
+
+- Guess the secret number and input it in the text area and hit submit
+![Screen Shot 2022-08-16 at 6 07 21 PM](https://user-images.githubusercontent.com/106197400/185013162-0f3a9705-13f5-4126-a8e9-d4e5714f6d85.png)
+
+- If your number doesn't match the secret number, we will display if it's higher or lower than your number. Also, we would keep track of no. wrong guesses   and numbers
+
+![Screen Shot 2022-08-16 at 6 08 06 PM](https://user-images.githubusercontent.com/106197400/185013300-fccd55b5-52cf-43a4-98c4-1dfd507bde93.png)
+
+- If you are smart enough to guess the secret number, we will display the Yay! message
+![Screen Shot 2022-08-16 at 6 08 17 PM](https://user-images.githubusercontent.com/106197400/185013354-ac21f4bf-5f1b-4e41-a2b9-a3c656fc498a.png)
 
 
 ## Instructions
