@@ -53,6 +53,7 @@ document.getElementById("submit").addEventListener("click", () => {
 
         if (input == random_number_generate){
         errorMessage.innerHTML = " Yay!! You guessed the number"
+        confetti()
         } else if ( input > random_number_generate){
             errorMessage.innerHTML = "Your number is higher than secret number"
             wrong_count.textContent = count_wrong_numbers
