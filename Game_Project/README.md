@@ -3,6 +3,8 @@ Guess my secret number is designed to let user play around with numbers and see 
 
 ## Demo
 
+
+
 ## Instructions
 - Select your number range. We offer three different number ranges
 - Guess the secret number and type in your number in the text area (make sure it's a number , otherwise it will give you an error message)

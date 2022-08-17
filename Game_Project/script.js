@@ -6,21 +6,25 @@ ready(() => {
     document.querySelector(".header").style.height = window.innerHeight + "px";
 })
 
-
-// document.querySelector("#range1").addEventListener("click", () => {
-    
-
 // generating a range of numbers
+function generateNumbersWithinRange(upper, lower){
+    return Math.floor(Math.random() * (upper - lower) + lower)
+}
 
-let random_number_generate1 = Math.floor(Math.random() * 10)+1; 
-console.log(random_number_generate1)
-
-let random_number_generate2 = Math.floor(Math.random() * (20 - 11 + 1)) + 11
-console.log(random_number_generate2)
-
-let random_number_generate3 = Math.floor(Math.random() * (30 - 21 + 1)) + 21
-console.log(random_number_generate3)
-
+let random_number_generate;
+document.querySelector(".row").addEventListener("click", (e) => {
+    console.log(e.target.id)
+    if (e.target.id === "range1"){
+        random_number_generate = generateNumbersWithinRange(10, 1)
+        console.log(random_number_generate) 
+    } else if (e.target.id === "range2"){
+        random_number_generate = generateNumbersWithinRange(20, 11)
+        console.log(random_number_generate)
+    } else {
+        random_number_generate = generateNumbersWithinRange(30, 21)
+        console.log(random_number_generate)
+    }
+})
 
 
 // when user inputs a number and submits : check if input meets criteria
@@ -47,13 +51,13 @@ document.getElementById("submit").addEventListener("click", () => {
         list_numbers.push(input);
     }
 
-        if (input == random_number_generate1){
+        if (input == random_number_generate){
         errorMessage.innerHTML = " Yay!! You guessed the number"
-        } else if ( input > random_number_generate1){
+        } else if ( input > random_number_generate){
             errorMessage.innerHTML = "Your number is higher than secret number"
             wrong_count.textContent = count_wrong_numbers
             list_wrong_numbers.textContent = list_numbers
-        } else if ( input < random_number_generate1){
+        } else if ( input < random_number_generate){
             errorMessage.innerHTML = "Your number is lower than secret number"
             wrong_count.textContent = count_wrong_numbers
             list_wrong_numbers.textContent = list_numbers
