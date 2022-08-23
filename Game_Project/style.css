@@ -4,7 +4,7 @@ body {
     background: #f2f6e9;
 }
 .navbar {
-    background:#6ab446;
+    background:#4d9528;
 }
 .nav-link,
 .navbar-brand {
@@ -41,16 +41,25 @@ body {
 	left: 50%;
 	position: absolute;
 	top: 45%;
-	transform: translate(-50%, -55%);
+	transform: translate(-50%, -40%);
 	text-align: center;
 }
 
 .description .row2{
 	position: relative;
-	margin: 2%;
+	margin: 1%;
 	text-align: center;
 
 }
+
+.result {
+
+	text-align: center;
+    color: rgb(236, 109, 109);
+    border: #6ab446;
+}
+
+
 .description h1 {
 	color: #6ab446;
 }
@@ -77,15 +86,13 @@ body {
 .description .name {
     color: #8b76bc;
     font-style:italic;
-    line-height: 1.5;
+    /* line-height: 1.5; */
     margin: 1%;
+    overflow: hidden;
     
 }
 
-#areafill {
-    text-align: center;
-    margin: 0.5%;
-}
+
 
 .features {
 	margin: 4em auto;       
