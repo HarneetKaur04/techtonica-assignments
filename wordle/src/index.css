@@ -18,6 +18,12 @@ main {
   justify-content: center;
 }
 
+.row {
+
+display: inline-block;
+margin: 2px;
+
+}
 .box {
   height:40px;
   width: 40px;
@@ -27,7 +33,6 @@ main {
   color: white;
   font-weight:bold
   
- 
 }
 
 .keyboard {

@@ -1,6 +1,4 @@
-export const data = [
+export const words = [
     "NESTS", "WORDS" , "MELON" , "BELLY"
 ]
 
-export const intial = [
-]
