@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+  background: linear-gradient(rgb(55, 195, 74), rgb(226, 208, 45));
+}
+
+main {
+  text-align: center;
+}
+
+.board {
+  color:rgb(18, 94, 28);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.box {
+  height:40px;
+  width: 40px;
+  border: solid blue;
+  margin: 5px;
+  background-color: black;
+  color: white;
+  font-weight:bold
+  
+ 
+}
+
+.keyboard {
+  margin-top: 60px;
+  margin-left: 40px;
+  margin-right: 40px;
+  /* border: solid gray; */
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.line1 {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}
+.line2 {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}
+.line3 {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}
+
+.styling {
+  border: solid black;
+  padding: 10px;
+  margin: 5px;
+  width: 70px;
+}
+
+.line4 {
+  flex: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}
+.enter, .backspace {
+  border: solid black;
+  padding: 10px;
+  margin: 5px;
+  width: 150px;
+ 
+}
+
+
