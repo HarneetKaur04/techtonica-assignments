@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.header {
+  display: flex;
+  background-image: linear-gradient(rgb(169, 45, 169), rgb(219, 149, 219));
+}
+
+.header-img{
+  width: 100px;
+  border-radius: 20px;
+  padding: 10px;
+  margin-right: 50px;
+}
+.header-title{
+  text-align: justify;
+  color: aliceblue;
+}
+
+.form { 
+  padding: 100px; 
+  text-align: center;
+  align-items: stretch;
+  justify-content: center;
+}
+.form-input { 
+margin-right: 10px;
+  
+}
+
+.para {
+  color: red;
+}
+
+
