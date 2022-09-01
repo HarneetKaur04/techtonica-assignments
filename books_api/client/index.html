@@ -60,7 +60,7 @@
                     </div>
             
                     <div class="modal-body">
-                        <form id="editForm" method="POST" onsubmit="location.reload()">
+                        <form id="editForm" method="POST" onsubmit="sendEdit(event)">
                             <div class="form-group">
                                 <label for="ISBN">ISBN</label>
                                 <input class="form-control" name="isbn" id="isbn">
@@ -80,7 +80,7 @@
                                  <input class="form-control" name="format" id="format">
                             </div>
             
-                            <button type="submit" class="btn btn-primary" >Submit</button>
+                            <button type="submit" class="btn btn-primary"  onclick="">Submit</button>
                         </form>
                     </div>
                 </div>

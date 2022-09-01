@@ -63,9 +63,17 @@ async function editBook(isbn){
     document.getElementById('author').value = author;
     document.getElementById('format').value = format;
 
-    // Setting up the action url for the book
+    // Setting up the action url for the book //default behavior to whateverr I a posting to which is action
     document.getElementById('editForm').action = `http://localhost:8080/api/books/${isbn}`
+
+    //  two ways :
+    // 1. Delete button use method post on submit button to model
     
+}
+
+
+function sendEdit(clear){
+    e
 }
 
 
