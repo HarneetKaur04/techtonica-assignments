@@ -44,13 +44,7 @@ async function deleteBook(isbn){
 
 }
 
-
-
-// User creating a book record
-// change html to have a form for creating new books
-
-// User editing a book record
-// change html to have a button for edit
+// User editing a book record. create a form with same info so user can edit
 
 async function editBook(isbn){
     const URL = "http://127.0.0.1:8080/api/books"
@@ -70,11 +64,10 @@ async function editBook(isbn){
     document.getElementById('format').value = format;
 
     // Setting up the action url for the book
-    document.getElementById('editForm').action = `http://localhost:8080/api/books/${isbn}`;
+    document.getElementById('editForm').action = `http://localhost:8080/api/books/${isbn}`
     
 }
 
 
 
 
-//create a form with same info and can edit

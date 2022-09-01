@@ -25,7 +25,7 @@
         <hr>
         <h1>Create New Book</h1>
         <hr>
-<!-- // create a form and setting a timeout to reload the page in 10 milliseconds. -->
+<!-- // create a form and reloading the page on submit -->
         <form action="http://localhost:8080/api/books" method="POST" onsubmit="location.reload()">
             <div class="form-group">
                 <label for="exampleInputPassword1">ISBN</label>
@@ -60,7 +60,7 @@
                     </div>
             
                     <div class="modal-body">
-                        <form id="editForm" method="POST">
+                        <form id="editForm" method="POST" onsubmit="location.reload()">
                             <div class="form-group">
                                 <label for="ISBN">ISBN</label>
                                 <input class="form-control" name="isbn" id="isbn">
@@ -80,7 +80,7 @@
                                  <input class="form-control" name="format" id="format">
                             </div>
             
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" >Submit</button>
                         </form>
                     </div>
                 </div>
