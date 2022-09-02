@@ -6,21 +6,21 @@ const BOOKS = [
         "format": "Paperback"
     },
     {
-        "isbn": "0679889175",
-        "title": "Harry Potter and the Chamber of Secrets",
-        "author": "J.K. Rowling",
+        "isbn": "9781593275846",
+        "title": "Eloquent JavaScript, Second Edition",
+        "author": "Marijn Haverbeke",
         "format": "Paperback"
     },
     {
-        "isbn": "0553096095",
-        "title": "Harry Potter and the Goblet of Fire",
-        "author": "J.K. Rowling",
-        "format": "Hardcover"
+        "isbn": "9780553593716",
+        "title": "A Game of Thrones (A Song of Ice and Fire, Book 1)",
+        "author": "George R. R. Martin",
+        "format": "Paperback"
     },
     {
-        "isbn": "05531324511",
-        "title": "A Court of Silver Flames",
-        "author": "Sarah J. Maas",
+        "isbn": "0358653037",
+        "title": "The Lord of the Rings",
+        "author": "William Morrow",
         "format": "Hardcover"
     },
 ]

@@ -9,7 +9,7 @@ let masterBookList = BOOKS;
 // //creates an endpoint for the route `/api/books` that prints all the books 
 
 router.get('/', (req, res)=> {
-console.log(masterBookList)
+//console.log(masterBookList)
 res.json(masterBookList)
 })
 
@@ -62,18 +62,11 @@ router.post('/:isbn', (req, res) => {
         let book = masterBookList[i]
         if (book.isbn === isbn) {
             masterBookList[i] = newBook;
+            res.send('Book with' + isbn + ' is edited');
+            return
         }
     }
-    res.send('Book is edited');
+    res.send('Book with' + isbn + ' Not FOUND!!!!');
 })
-
-
-
-
-
-    
-
-
-
 
 export default router

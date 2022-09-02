@@ -3,13 +3,13 @@
 
 
 // showing books
-async function showBooks(){
+async function showBooks() {
     const URL = "http://127.0.0.1:8080/api/books"
     const response = await fetch(URL);
     const responseBooks = await response.json();
     console.log(responseBooks)
-    for (let book of responseBooks){
-    const tempCard = `<div class="col-4">
+    for (let book of responseBooks) {
+        const tempCard = `<div class="col-4">
     <div class="card">
         <div class="card-body">
         <h5 class="card-title">${book.title}</h5>
@@ -25,20 +25,16 @@ async function showBooks(){
         </div>
     </div>
 </div>`
-document.getElementById('books').innerHTML = document.getElementById('books').innerHTML + tempCard;
+        document.getElementById('books').innerHTML = document.getElementById('books').innerHTML + tempCard;
+    }
 }
-}
-
 
 showBooks()
 
-// fetch can do delete
-// User deleting a book record
-// change html to have a button for delete
-async function deleteBook(isbn){
+async function deleteBook(isbn) {
     // console.log(isbn)
     const URL = "http://127.0.0.1:8080/api/books"
-    const response = await fetch(URL + "/" + isbn, {method: 'DELETE'});
+    const response = await fetch(URL + "/" + isbn, { method: 'DELETE' });
     // console.log(response)
     location.reload()
 
@@ -46,9 +42,9 @@ async function deleteBook(isbn){
 
 // User editing a book record. create a form with same info so user can edit
 
-async function editBook(isbn){
+async function editBook(isbn) {
     const URL = "http://127.0.0.1:8080/api/books"
-    const response = await fetch(URL + "/" + isbn, {method: 'GET'});
+    const response = await fetch(URL + "/" + isbn, { method: 'GET' });
     const book = await response.json();
     console.log(book)
     const {
@@ -68,13 +64,43 @@ async function editBook(isbn){
 
     //  two ways :
     // 1. Delete button use method post on submit button to model
-    
+
+}
+async function addButton(event) {
+    event.preventDefault();
+    console.log('submitted add button');
+    const data = new FormData(event.target);
+    const value = Object.fromEntries(data.entries());
+    //console.log({ value });
+    const URL = "http://127.0.0.1:8080/api/books"
+    const response = await fetch(event.target.action, {
+        method: 'POST', body: JSON.stringify(value), headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    });
+    const respData = await response.text()
+    console.log(respData)
+    location.reload()
+}
+
+async function sendEdit(event) {
+    event.preventDefault();
+    console.log('submitted');
+    const data = new FormData(event.target);
+    const value = Object.fromEntries(data.entries());
+    //console.log({ value });
+    const URL = "http://127.0.0.1:8080/api/books"
+    const response = await fetch(event.target.action, {
+        method: 'POST', body: JSON.stringify(value), headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    });
+    const respData = await response.text()
+    console.log(respData)
+    location.reload()
 }
 
 
-function sendEdit(clear){
-    e
-}
 
 
 
