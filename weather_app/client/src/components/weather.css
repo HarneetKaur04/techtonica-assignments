@@ -1,10 +1,7 @@
 section {
-    background: rgb(223, 10, 172);
-    background: linear-gradient(
-      135deg,
-      rgba(223, 10, 172, 1) 35%,
-      rgba(225, 21, 251, 1) 46%
-    );
+    background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+    font-size: 16px;
+    font-weight: bold;
     
   }
 
@@ -23,8 +20,11 @@ section {
     width: 50%;
     border: 3px solid blue;
     padding: 10px;
+    background: linear-gradient(to bottom, #ADD8E6, yellow, #ADD8E6);
     
   }
+
+  
 
 
   

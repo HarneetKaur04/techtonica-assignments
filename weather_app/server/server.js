@@ -23,7 +23,7 @@ app.get('/weather', (req,res)=> {
         if (response.ok) { // Checks server response (if there is one) 
             return response.json();
         } else {
-            throw new Error("Bad response");
+            throw new Error("Bad response" +  response);
         }})
     .then(data => 
         {

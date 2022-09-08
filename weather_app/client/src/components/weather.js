@@ -1,27 +1,27 @@
 import React, {useState} from 'react'
 import "./weather.css"
 
-const Weather = () => {
+
+const Weather = ({values}) => {
     let today = new Date();
     let date =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
     const[input, setInput] = useState("")
     const [weatherData, setWeatherData] = useState(null);
-    const [result, setResult] = useState(false);
-    // const [isLoading, setIsLoading] = useState(false);
-    // setWeatherData("changed Data")
+
     // console.log(weatherData)
 
     const handleInput =  (e) => {
         setInput(e.target.value)
     }
     
-    const handleSubmit =  (e) => {
+    const handleSubmitButton =  (e) => {
         if (input === "") {
             console.log("please input a city")
         } 
         if (input != ""){
         e.preventDefault();
+
         // setIsLoading(true);
        
         fetch("http://localhost:9001/weather")
@@ -34,15 +34,16 @@ const Weather = () => {
         .then((data) => 
             {
                 setWeatherData(data);
-                //console.log(input)
-                //console.log(data)
-                
+                console.log(input)
+                console.log(data)
                 setInput("")
-                setResult(true)
             }) 
+
+    
        
     }
 }
+
 // console.log(weatherData)
   return (
     <section className="section">
@@ -50,9 +51,9 @@ const Weather = () => {
             <h1>Weather App </h1>
             <p>{date}</p>
             <div>
-                <form onSubmit={handleSubmit} >
+                <form onSubmit={handleSubmitButton} >
                     <input type="text" placeholder="Search city" value={input} onChange= {handleInput}/>
-                    <input type="submit" value="Submit" onSubmit={handleSubmit} />
+                    <input type="submit" value="Submit" onSubmit={handleSubmitButton} />
                 </form>
             </div>
             { weatherData ? weatherData  === "404" ? (
@@ -60,10 +61,10 @@ const Weather = () => {
             ) : (
                 <>
                 <div>
-                <img src={`/${weatherData.weather[0].icon}.png`} alt="image"/>
+                <img src={`/${weatherData.weather[0].icon}.png`} alt={weatherData.weather[0].main}/>
                 </div>
                 <div>
-                    <p>City: {weatherData.name}</p>
+                    <p style={{color: "blue", fontSize: 20, }}>City: {weatherData.name}</p>
                     <p>Temp: {weatherData.main.temp}°F</p>
                     <p>Weather: {weatherData.weather[0].main}</p>
                     <p>Temp Range: {weatherData.main.temp_min}°F/ {weatherData.main.temp_max}°F</p>
