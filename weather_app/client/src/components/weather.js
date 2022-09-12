@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import "./weather.css"
 
 
@@ -6,7 +6,7 @@ const Weather = ({values}) => {
     let today = new Date();
     let date =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-    const[input, setInput] = useState("")
+    const[input, setInput] = useState("london")
     const [weatherData, setWeatherData] = useState(null);
 
     // console.log(weatherData)
@@ -15,16 +15,18 @@ const Weather = ({values}) => {
         setInput(e.target.value)
     }
     
+    
     const handleSubmitButton =  (e) => {
+        console.log(input)
+        e.preventDefault()
         if (input === "") {
             console.log("please input a city")
         } 
-        if (input != ""){
-        e.preventDefault();
+        if (input != "") {
 
-        // setIsLoading(true);
-       
-        fetch("http://localhost:9001/weather")
+  
+    
+        fetch(`http://localhost:9001/input/${input}`)
         .then((response) => { 
             if (response.ok) { // Checks server response (if there is one) 
                 return response.json();
@@ -38,9 +40,6 @@ const Weather = ({values}) => {
                 console.log(data)
                 setInput("")
             }) 
-
-    
-       
     }
 }
 
@@ -53,7 +52,7 @@ const Weather = ({values}) => {
             <div>
                 <form onSubmit={handleSubmitButton} >
                     <input type="text" placeholder="Search city" value={input} onChange= {handleInput}/>
-                    <input type="submit" value="Submit" onSubmit={handleSubmitButton} />
+                    <input type="submit" value="Submit"  />
                 </form>
             </div>
             { weatherData ? weatherData  === "404" ? (

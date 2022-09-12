@@ -1,9 +1,12 @@
 // This is express server
 import express from 'express';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 import { config } from "dotenv";
 config();
 
+let jsonParser = bodyParser.json()
+let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const app = express();
 const port = 9001;
@@ -16,20 +19,24 @@ app.get('/' , (req, res)=> {
 })
 
 const url = "https://api.openweathermap.org/data/2.5/"
-app.get('/weather', (req,res)=> {
-    fetch(`${url}weather?q=london&APPID=${process.env.REACT_APP_API}&units=imperial`)
+app.get('/input/:query' , (req, res)=> {
+    const cityName = req.params.query
+    console.log("body", cityName)
+    console.log("body", typeof(cityName))
+    fetch(`${url}weather?q=${cityName}&APPID=${process.env.REACT_APP_API}&units=imperial`)
     // console.log(fetch)
     .then((response) => { 
         if (response.ok) { // Checks server response (if there is one) 
             return response.json();
         } else {
-            throw new Error("Bad response" +  response);
+            res.send("Wrong city")
         }})
     .then(data => 
         {
             console.log(data)
             res.send(data)
-        }) 
+        })     
+
 })
 
 const urlForecast = "https://api.openweathermap.org/data/2.5/"
