@@ -2,8 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { config } from "dotenv";
-config();
+
 
 let jsonParser = bodyParser.json()
 let urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -11,11 +10,22 @@ let urlencodedParser = bodyParser.urlencoded({ extended: false })
 const app = express();
 const port = 4444;
 app.use(cors());
-console.log(process.env.REACT_APP_API)
+
 
 
 app.get('/' , (req, res)=> {
-    res.json("Hello from Techtonica")
+    res.json("Let's fetch the data for quiz questions")
+})
+
+app.get('/questions' , (req, res)=> {
+    fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple")
+    .then(res => res.json())
+    .then(data => {
+        data.forEach
+        res.send(data)
+        console.log(data)
+    })
+        
 })
 
 
