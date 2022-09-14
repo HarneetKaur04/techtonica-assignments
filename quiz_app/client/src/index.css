@@ -153,13 +153,19 @@ button {
 }
 
 header {
-  height: 200px;
   width: 40%;
-  justify-content: center;
-  align-items: center;
-  display: inline;
+  margin: 0 auto;
+  display: block;
   text-align: center;
 
+}
+
+.input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  resize: vertical;
+  
 }
 
 
