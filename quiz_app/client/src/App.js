@@ -64,7 +64,7 @@ function App(){
       <header className="App-header">
         <Slideshow />
         {!user? <UserForm  value={value} handleFormInputChange={handleFormInputChange}  handleSubmit={handleSubmit}/> : null}
-        {showScore? (<><p>You score is {score}</p>  <button className="next-btn" type="submit" onClick={()=> window.location.reload(false)}>Play Again</button></>) : user && questions ? <Game handleClick={handleClick} currentQuestion ={currentQuestion} user={user} showScore={showScore} score={score} questions={questions}  value={value} /> : null}
+        {showScore? (<><p>Your score is {score}</p>  <button className="next-btn" type="submit" onClick={()=> window.location.reload(false)}>Play Again</button></>) : user && questions ? <Game handleClick={handleClick} currentQuestion ={currentQuestion} user={user} showScore={showScore} score={score} questions={questions}  value={value} /> : null}
 
   
       </header>

@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react'
 
-const image = ["http://pa1.narvii.com/6434/c4b1b4dabb9ed4fa32f21979a2da69a7bac2bdf0_00.gif", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNtMAoCCHaKh-52W7WtENcAxFk61tmAXeQY3Bz7jZAyzFTry-GTSnR3KKIfda6lggNP9M&usqp=CAU", "https://meme-generator.com/wp-content/uploads/mememe/2020/09/what-time-is-it-its-quiz-time-254070-1.jpg"];
+const image = ["http://pa1.narvii.com/6434/c4b1b4dabb9ed4fa32f21979a2da69a7bac2bdf0_00.gif", , "https://meme-generator.com/wp-content/uploads/mememe/2020/09/what-time-is-it-its-quiz-time-254070-1.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNtMAoCCHaKh-52W7WtENcAxFk61tmAXeQY3Bz7jZAyzFTry-GTSnR3KKIfda6lggNP9M&usqp=CAU"];
 const delay = 2500;
 
 const Slideshow = () => {
