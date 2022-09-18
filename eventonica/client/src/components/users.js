@@ -7,7 +7,6 @@ const Users = () => {
     const [users, setUsers] = useState([marlin, nemo, dory])
     const [value, setValue] = useState({name: '', email: '', id: ''})
     const [deleteId, setDeleteId] = useState("")
-    const [errorMessage, setErrorMessage] = useState("")
 
     const handleInputChange = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value });
