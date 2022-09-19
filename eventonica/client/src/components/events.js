@@ -36,8 +36,7 @@ const Events = () => {
 
       }
 
-      const handleDeleteButton = (e) => {
-        e.preventDefault();
+      const handleDeleteButton = (deleteId) => {
         console.log(deleteId)
         const filteredEvents = events.filter((i) => i.id !== deleteId);
         setEvents(filteredEvents);
@@ -51,26 +50,18 @@ const Events = () => {
             <h2>Event Management</h2>
             <div>
               <h3>All Events</h3>
-              <ul id="events-list">
-              {Object.values(events).map((val) => (<li>{val.name}<br/>
-            {val.date}<br/>{val.category}<br/>*******</li>))}
-              </ul>
+              
+              {Object.values(events).map((val) => (<div class="card"><input id="star1" class="star" type="checkbox" title="bookmark page"/><br/><br/><strong>{val.name}</strong><br/>
+            {val.date}<br/>{val.category}<br/><button type="delete" onClick={() => handleDeleteButton(val.id)}>Delete</button ><button type="edit">Edit</button> </div>))}
             </div>
+            
           </section>
         </div>
 
         <AddEvent handleAddEvent={handleAddEvent} />
 
         <div>
-          <h3>Delete Event</h3>
-          <form id="delete-event" onSubmit={handleDeleteButton} action="#">
-            <fieldset>
-              <label>Event ID</label>
-              <input type="number" min="1" id="delete-event-id" onChange={(e)=> setDeleteId(e.target.value)}/>
-            </fieldset>
-            <input type="submit" />
-          </form>
-        </div>
+    
         <aside className="search-toolbar">
           <div>
             <h3>Find Events</h3>
@@ -88,8 +79,10 @@ const Events = () => {
             </form>
           </div>
         </aside>
+        </div>
     </>
   )
 }
+
 
 export default Events

@@ -1,38 +1,63 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { NavItem } from 'reactstrap';
-const marlin = { name: 'Marlin', email: 'marlin@gmail.com', id: '1' };
-    const nemo = { name: 'Nemo', email: 'nemo@gmail.com', id: '2' };
-    const dory = { name: 'Dory', email: 'dory@gmail.com', id: '3' };
+
 const Users = () => {
-    const [users, setUsers] = useState([marlin, nemo, dory])
+
+    const [users, setUsers] = useState("")
     const [value, setValue] = useState({name: '', email: '', id: ''})
     const [deleteId, setDeleteId] = useState("")
+
+    const getUsers = () => {
+      fetch('http://localhost:2001')
+        .then((res) => res.json())
+        .then((data) => setUsers(data.users));
+      };
+    getUsers()
 
     const handleInputChange = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value });
     }
-    const handleSubmit = (e) => {
+
+    // using post request to post data to backend and then fetching the response and setting the new users and also resetting the form
+    const handleSubmit = async(e) => {
         e.preventDefault();
         const newUser = { id: value.id, name: value.name, email: value.email };
+        console.log(newUser)
+        const rawResponse = await fetch("http://localhost:2001/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newUser)
+    });
+    const content = await rawResponse.json();
+        setUsers([...users, content]);
         setValue({name: '', email: '', id: ''})
-        setUsers([...users, newUser]);
-        
+         
       };
-    const handleDeleteButton = (e) => {
+
+      // handling delete button by filtering out id
+    const handleDeleteButton = async (e) => {
       e.preventDefault();
       console.log(deleteId)
-      const newUsers = users.filter((i) => i.id !== deleteId);
-      setUsers(newUsers);
+    //   const deleteUsers = users.filter((user) => user.id !== deleteId);
+    // console.log(deleteUsers);
+   
+      // Simple DELETE HTTP request with async await
+      let response = await fetch(`http://localhost:2001/${deleteId}`, {method: "DELETE"})
+       console.log(response)
+       
       }
-    
-
 
   return (
     <>
     <section className="user-management">
             <h2>User Management</h2>   
-            {Object.values(users).map((val, index) => (index={index} , <li>{val.name}<br/>
-            {val.email}</li>))}
+            {Object.values(users).map((val, index) => (index={index} , 
+            <div class="list-wrapper"><ul class="list">
+            <li class="list-item">{val.name}<br/>
+            {val.email}</li></ul></div>))}
 
             <div>
               <h3>Add User</h3>
