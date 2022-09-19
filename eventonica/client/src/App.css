@@ -67,12 +67,10 @@ button[type = edit] {
 }
 .star:before {
    content: "\1F49E";
-   color: pink;
    visibility:visible;
 }
 .star:checked:before {
    content: "\1F494";
-   color: pink;
 
 }
 .list-wrapper {

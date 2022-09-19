@@ -4,7 +4,7 @@ import { NavItem } from 'reactstrap';
 const Users = () => {
 
     const [users, setUsers] = useState("")
-    const [value, setValue] = useState({name: '', email: '', id: ''})
+    const [value, setValue] = useState({name: '', email: '', id:''})
     const [deleteId, setDeleteId] = useState("")
 
     const getUsers = () => {
@@ -32,17 +32,13 @@ const Users = () => {
       body: JSON.stringify(newUser)
     });
     const content = await rawResponse.json();
-        setUsers([...users, content]);
-        setValue({name: '', email: '', id: ''})
-         
+    console.log("content" , content)      
       };
 
       // handling delete button by filtering out id
     const handleDeleteButton = async (e) => {
       e.preventDefault();
       console.log(deleteId)
-    //   const deleteUsers = users.filter((user) => user.id !== deleteId);
-    // console.log(deleteUsers);
    
       // Simple DELETE HTTP request with async await
       let response = await fetch(`http://localhost:2001/${deleteId}`, {method: "DELETE"})
@@ -70,7 +66,7 @@ const Users = () => {
                   value={value.email} onChange={handleInputChange} type="text" id="add-user-email" />
                   <label>ID</label>
                   <input name="id" 
-                  value={value.id} onChange={handleInputChange}type="text" id="add-user-id" />
+                  value={value.id} onChange={handleInputChange}type="number" id="add-user-id" />
                 </fieldset>
                 <input type="submit" value="Add" />
               </form>
@@ -82,7 +78,7 @@ const Users = () => {
                 <fieldset>
                   <label>User ID</label>
                   <input name="deleting" onChange={(e)=> setDeleteId(e.target.value)}
-                  type="text" id="delete-user-id" />
+                  type="number" id="delete-user-id" />
                 </fieldset>
                 <input type="submit" />
               </form>

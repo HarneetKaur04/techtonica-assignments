@@ -1,45 +1,37 @@
 import React, {useState} from 'react'
 import AddEvent from './addevent';
 
-const event1 = {
-    id: "1",
-    name: "Birthday",
-    date: "2022-09-01",
-    description: "A birthday party for my best friend",
-    category: "Celebration",
-  };
-  
-  const event2 = {
-    id: "2",
-    name: "Graduation",
-    date: "2022-08-01",
-    description: "The class of 2021 graduates from East High",
-    category: "Education",
-  };
-  
-  const event3 = {
-    id: "3",
-    name: "JS Study Session",
-    date: "2022-10-01",
-    description: "A chance to practice Javascript interview questions",
-    category: "Education",
-  };
+
 
 const Events = () => {
 
-    const [events, setEvents] = useState([event1, event2, event3])
-    const [deleteId, setDeleteId] = useState("")
+    const [events, setEvents] = useState("")
 
-    const handleAddEvent = (newEvent) => {
-        // const newEvent = {id, name, date, description, category}
-        setEvents([...events, newEvent]);
+    const getEvents = () => {
+      fetch('http://localhost:2001/events')
+        .then((res) => res.json())
+        .then((data) => setEvents(data.events));
+      };
+      getEvents()
 
+    const handleAddEvent = async (newEvent) => {
+      const eventresponse = await fetch("http://localhost:2001/events", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newEvent)
+    });
+    const eventcontent = await eventresponse.json();
+    console.log("eventcontent" , eventcontent)    
+   
       }
 
-      const handleDeleteButton = (deleteId) => {
+      const handleDeleteButton = async (deleteId) => {
         console.log(deleteId)
-        const filteredEvents = events.filter((i) => i.id !== deleteId);
-        setEvents(filteredEvents);
+        let response = await fetch(`http://localhost:2001/events/${deleteId}`, {method: "DELETE"})
+        console.log(response)
         }
 
 

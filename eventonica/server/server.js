@@ -62,22 +62,52 @@ app.delete('/:id', (req,res)=>{
 
 // Creating users page and using initial mock data
 let mockEvents = [
-    { id: 1, name: 'Marlin', email: 'marlin@gmail.com' },
-    { id: 2, name: 'Nemo', email: 'nemo@gmail.com' },
-    { id: 3, name: 'Dory', email: 'dory@gmail.com' }
+    {
+        id: "1",
+        name: "Birthday",
+        date: "2022-09-01",
+        description: "A birthday party for my best friend",
+        category: "Celebration",
+      },
+      
+      {
+        id: "2",
+        name: "Graduation",
+        date: "2022-08-01",
+        description: "The class of 2021 graduates from East High",
+        category: "Education",
+      },
+      
+      {
+        id: "3",
+        name: "JS Study Session",
+        date: "2022-10-01",
+        description: "A chance to practice Javascript interview questions",
+        category: "Education",
+      }
   ];
-app.get('/' , (req, res)=> {
+app.get('/events' , (req, res)=> {
     // res.json("Event page")
-    res.json({ users: mockUsers });
+    res.json({ events: mockEvents });
 })
 
-app.post('/', (req,res)=>{
-const user = {
+app.post('/events', (req,res)=>{
+const newEvent = {
     id: req.body.id,
     name: req.body.name,
-    email: req.body.email
+    date: req.body.date,
+    description: req.body.description,
+    category: req.body.category
   };
-  mockUsers.push(user)
+  mockEvents.push(newEvent)
 })
+
+app.delete('/events/:id', (req,res)=>{
+    const id = req.params.id;
+    console.log(id)
+    // remove item from mockUsers
+    mockEvents = mockEvents.filter((i) => i.id != id)
+    console.log(mockEvents)
+    })
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));
