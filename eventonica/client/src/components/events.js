@@ -5,12 +5,12 @@ import AddEvent from './addevent';
 
 const Events = () => {
 
-    const [events, setEvents] = useState("")
+    const [events, setEvents] = useState([])
 
     const getEvents = () => {
       fetch('http://localhost:2001/events')
         .then((res) => res.json())
-        .then((data) => setEvents(data.events));
+        .then((data) => setEvents(data));
       };
       getEvents()
 
@@ -23,8 +23,8 @@ const Events = () => {
       },
       body: JSON.stringify(newEvent)
     });
-    const eventcontent = await eventresponse.json();
-    console.log("eventcontent" , eventcontent)    
+    const eventcontent = await eventresponse.json(); 
+    setEvents([...events, eventcontent]) 
    
       }
 
@@ -43,8 +43,8 @@ const Events = () => {
             <div>
               <h3>All Events</h3>
               
-              {Object.values(events).map((val) => (<div class="card"><input id="star1" class="star" type="checkbox" title="bookmark page"/><br/><br/><strong>{val.name}</strong><br/>
-            {val.date}<br/>{val.category}<br/><button type="delete" onClick={() => handleDeleteButton(val.id)}>Delete</button ><button type="edit">Edit</button> </div>))}
+              {events.map((val) => (<div class="card"><input id="star1" class="star" type="checkbox" title="bookmark page"/><br/><br/><strong>{val.name}</strong><br/>
+            {val.date}<br/>Category: {val.category}<br/>{val.description}<br/><button type="delete" onClick={() => handleDeleteButton(val.id)}>Delete</button ><button type="edit">Edit</button> </div>))}
             </div>
             
           </section>

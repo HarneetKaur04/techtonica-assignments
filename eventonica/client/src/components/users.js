@@ -3,14 +3,14 @@ import { NavItem } from 'reactstrap';
 
 const Users = () => {
 
-    const [users, setUsers] = useState("")
+    const [users, setUsers] = useState([])
     const [value, setValue] = useState({name: '', email: '', id:''})
     const [deleteId, setDeleteId] = useState("")
 
     const getUsers = () => {
       fetch('http://localhost:2001')
         .then((res) => res.json())
-        .then((data) => setUsers(data.users));
+        .then((data) => setUsers(data));
       };
     getUsers()
 
@@ -23,7 +23,7 @@ const Users = () => {
         e.preventDefault();
         const newUser = { id: value.id, name: value.name, email: value.email };
         console.log(newUser)
-        const rawResponse = await fetch("http://localhost:2001/", {
+        const rawResponse = await fetch("http://localhost:2001", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -32,7 +32,8 @@ const Users = () => {
       body: JSON.stringify(newUser)
     });
     const content = await rawResponse.json();
-    console.log("content" , content)      
+    setUsers([...users, content]); 
+    setValue({name: '', email: '', id:''})   
       };
 
       // handling delete button by filtering out id
@@ -50,7 +51,7 @@ const Users = () => {
     <>
     <section className="user-management">
             <h2>User Management</h2>   
-            {Object.values(users).map((val, index) => (index={index} , 
+            {users.map((val) => (
             <div class="list-wrapper"><ul class="list">
             <li class="list-item">{val.name}<br/>
             {val.email}</li></ul></div>))}

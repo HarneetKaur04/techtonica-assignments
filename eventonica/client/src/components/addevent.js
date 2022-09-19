@@ -2,7 +2,6 @@ import React, {useReducer} from 'react'
 
 const AddEvent = ({handleAddEvent}) => {
     const initialState = {
-        id: "",
         name: "",
         date: "",
         description: "",
@@ -10,10 +9,8 @@ const AddEvent = ({handleAddEvent}) => {
       };
 
       const reducer = (state, action) => {
-        console.log(action, "this is the action");
         switch (action.type) {
           case "editName":
-            console.log("Logged if the editName action is being dispatched");
             return { ...state, name: action.payload };
     
           case "editDescription":
@@ -24,9 +21,6 @@ const AddEvent = ({handleAddEvent}) => {
     
           case "editDate":
             return { ...state, date: action.payload };
-    
-          case "editId":
-            return { ...state, id: action.payload };
     
           default:
             return state;
@@ -48,19 +42,7 @@ const AddEvent = ({handleAddEvent}) => {
         }}
       >
         <fieldset>
-          <label>Id</label>
-          <input
-            type="text"
-            id="add-event-id"
-            value={state.id || ""}
-            onChange={(e) =>
-              dispatch({
-                type: "editId",
-                payload: e.target.value
-              })
-            }
-            required
-          />
+          
         <label>Event Name</label>   
           <input
             type="text"

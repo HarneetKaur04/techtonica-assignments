@@ -2,6 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import db from "./db/db-connection.js";
 
 
 // let jsonParser = bodyParser.json()
@@ -15,45 +16,45 @@ app.use(express.urlencoded({ extended: false }));
 
 // ****************USERS *********************
 
-// Creating users page and using initial mock data
-let mockUsers = [
-    { id: 1, name: 'Marlin', email: 'marlin@gmail.com' },
-    { id: 2, name: 'Nemo', email: 'nemo@gmail.com' },
-    { id: 3, name: 'Dory', email: 'dory@gmail.com' }
-  ];
-app.get('/' , (req, res)=> {
-    // res.json("Event page")
-    res.json({ users: mockUsers });
+// Creating users end-point and fetching data from database
+app.get('/' , async(req, res)=> {
+    // res.json({ users: mockUsers });
+    try {
+        const users = await db.any('SELECT * FROM users');
+        res.send(users);
+      } catch (e) {
+        return res.status(400).json({ e });
+      }
 })
 
-app.post('/', (req,res)=>{
+app.post('/', async(req,res)=>{
 const user = {
     id: req.body.id,
     name: req.body.name,
     email: req.body.email
   };
-  mockUsers.push(user)
+
+  try {
+    const createdUser = await db.one(
+      'INSERT INTO users(name, email, id) VALUES($1, $2, $3) RETURNING *',
+      [user.name, user.email, user.id]
+    );
+    console.log(createdUser);
+    res.send(createdUser);
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
 })
 
-// app.get('/:id', (req,res)=>{
-//     const id = req.params.id;
-//     let newUser;
-//     for (let i = 0; i < mockUsers.length; i++) {
-//         let newUser = mockUsers[i]
-//         if (newUser.id === id) {
-//             res.json(mockUsers[i]);
-//             return
-//         }
-//     }
-//     res.sendStatus(404)
-//     })
-
-app.delete('/:id', (req,res)=>{
-    const id = req.params.id;
-    console.log(id)
-    // remove item from mockUsers
-    mockUsers = mockUsers.filter((i) => i.id != id)
-    console.log(mockUsers)
+app.delete('/:id', async(req,res)=>{
+    // : acts as a placeholder
+    const userId = req.params.id;
+    try {
+    await db.none("DELETE FROM users WHERE id=$1", [userId]);
+    res.send({ status: "success" });
+    } catch (e) {
+    return res.status(400).json({ e });
+    }
     })
 
 
@@ -61,37 +62,17 @@ app.delete('/:id', (req,res)=>{
 // ****************Events *********************
 
 // Creating users page and using initial mock data
-let mockEvents = [
-    {
-        id: "1",
-        name: "Birthday",
-        date: "2022-09-01",
-        description: "A birthday party for my best friend",
-        category: "Celebration",
-      },
-      
-      {
-        id: "2",
-        name: "Graduation",
-        date: "2022-08-01",
-        description: "The class of 2021 graduates from East High",
-        category: "Education",
-      },
-      
-      {
-        id: "3",
-        name: "JS Study Session",
-        date: "2022-10-01",
-        description: "A chance to practice Javascript interview questions",
-        category: "Education",
-      }
-  ];
-app.get('/events' , (req, res)=> {
+app.get('/events' , async(req, res)=> {
     // res.json("Event page")
-    res.json({ events: mockEvents });
+    try{
+        const events = await db.any('SELECT * FROM events');
+        res.send(events);
+      } catch (e) {
+        return res.status(400).json({ e });
+    }
 })
 
-app.post('/events', (req,res)=>{
+app.post('/events', async(req,res)=>{
 const newEvent = {
     id: req.body.id,
     name: req.body.name,
@@ -99,15 +80,27 @@ const newEvent = {
     description: req.body.description,
     category: req.body.category
   };
-  mockEvents.push(newEvent)
+  try {
+    const createdEvent = await db.one(
+      'INSERT INTO events(name, date, description, category) VALUES($1, $2, $3 , $4) RETURNING *',
+      [newEvent.name, newEvent.date, newEvent.description, newEvent.category]
+    );
+    console.log(createdEvent);
+    res.send(createdEvent);
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
 })
 
-app.delete('/events/:id', (req,res)=>{
-    const id = req.params.id;
-    console.log(id)
-    // remove item from mockUsers
-    mockEvents = mockEvents.filter((i) => i.id != id)
-    console.log(mockEvents)
+app.delete('/events/:id', async(req,res)=>{
+    const eventid = req.params.id;
+    console.log(eventid)
+    try {
+        await db.none("DELETE FROM events WHERE id=$1", [eventid]);
+        res.send({ status: "success" });
+        } catch (e) {
+        return res.status(400).json({ e });
+        }
     })
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));
