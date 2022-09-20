@@ -6,6 +6,9 @@ import AddEvent from './addevent';
 const Events = () => {
 
     const [events, setEvents] = useState([])
+    const [filteredData,setFilteredData] = useState(events);
+    const [search, setsearch] = useState(false)
+
 
     const getEvents = () => {
       fetch('http://localhost:2001/events')
@@ -28,10 +31,22 @@ const Events = () => {
    
       }
 
-      const handleDeleteButton = async (deleteId) => {
+    const handleDeleteButton = async (deleteId) => {
         console.log(deleteId)
         let response = await fetch(`http://localhost:2001/events/${deleteId}`, {method: "DELETE"})
         console.log(response)
+        }
+      
+    const handleSearch = async(event) => {
+      setsearch(true)
+      let value = event.target.value;
+      let result = [];
+      console.log(value);
+      result = events.filter((data) => {
+      return data.category.toLowerCase().startsWith(value.toLowerCase());
+      });
+      setFilteredData(result);
+
         }
 
 
@@ -40,38 +55,29 @@ const Events = () => {
         <div className="user-and-events">
           <section className="event-management">
             <h2>Event Management</h2>
+            <div class="wrap">
+   <div class="search">
+      <input type="text" class="searchTerm" placeholder="What category are you looking for?" onChange={(handleSearch)}/>
+      <button type="submit" class="searchButton">
+      <i class="fa-solid fa-magnifying-glass"></i>
+     </button>
+   </div>
+</div>
             <div>
-              <h3>All Events</h3>
+              <h3>Your Events Details</h3>
+              {search? (filteredData.map((val) => (<div class="card"><input id="star1" class="star" type="checkbox" title="bookmark page"/><br/><br/><strong>{val.name}</strong><br/>
+            {val.date}<br/>Category: {val.category}<br/>{val.description}<br/><button type="delete" onClick={() => handleDeleteButton(val.id)}>Delete</button ><button type="edit">Edit</button> </div>))): (events.map((val) => (<div class="card"><input id="star1" class="star" type="checkbox" title="bookmark page"/><br/><br/><strong>{val.name}</strong><br/>
+            {val.date}<br/>Category: {val.category}<br/>{val.description}<br/><button type="delete" onClick={() => handleDeleteButton(val.id)}>Delete</button ><button type="edit">Edit</button> </div>)))}
               
-              {events.map((val) => (<div class="card"><input id="star1" class="star" type="checkbox" title="bookmark page"/><br/><br/><strong>{val.name}</strong><br/>
-            {val.date}<br/>Category: {val.category}<br/>{val.description}<br/><button type="delete" onClick={() => handleDeleteButton(val.id)}>Delete</button ><button type="edit">Edit</button> </div>))}
             </div>
             
           </section>
         </div>
 
+
         <AddEvent handleAddEvent={handleAddEvent} />
 
-        <div>
-    
-        <aside className="search-toolbar">
-          <div>
-            <h3>Find Events</h3>
-            <form id="search" action="#">
-              <fieldset>
-                <label htmlFor="date-search">Date</label>
-                <input type="text" id="date-search" placeholder="YYYY-MM-DD" />
-              </fieldset>
-              <fieldset>
-                <label htmlFor="category-search">Category</label>
-                <input type="text" id="category-search" />
-              </fieldset>
-
-              <input type="submit" value="Search" />
-            </form>
-          </div>
-        </aside>
-        </div>
+        
     </>
   )
 }

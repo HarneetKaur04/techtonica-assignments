@@ -93,8 +93,9 @@ const AddEvent = ({handleAddEvent}) => {
               })
             }
           />
+          <button >Submit</button>
         </fieldset>
-        <button >Submit</button>
+        
       </form>
     </div>
   )

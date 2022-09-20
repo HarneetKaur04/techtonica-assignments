@@ -82,7 +82,8 @@ const newEvent = {
   };
   try {
     const createdEvent = await db.one(
-      'INSERT INTO events(name, date, description, category) VALUES($1, $2, $3 , $4) RETURNING *',
+      
+        'INSERT INTO events(name, date, description, category) VALUES($1, $2, $3 , $4) RETURNING *',
       [newEvent.name, newEvent.date, newEvent.description, newEvent.category]
     );
     console.log(createdEvent);
@@ -102,5 +103,6 @@ app.delete('/events/:id', async(req,res)=>{
         return res.status(400).json({ e });
         }
     })
+
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));
