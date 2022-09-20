@@ -55,18 +55,18 @@ const Events = () => {
         <div className="user-and-events">
           <section className="event-management">
             <h2>Event Management</h2>
-            <div class="wrap">
-   <div class="search">
-      <input type="text" class="searchTerm" placeholder="What category are you looking for?" onChange={(handleSearch)}/>
-      <button type="submit" class="searchButton">
-      <i class="fa-solid fa-magnifying-glass"></i>
+            <div className="wrap">
+   <div className="search">
+      <input type="text" className="searchTerm" placeholder="What category are you looking for?" onChange={(handleSearch)}/>
+      <button type="submit" className="searchButton">
+      <i className="fa-solid fa-magnifying-glass"></i>
      </button>
    </div>
 </div>
             <div>
               <h3>Your Events Details</h3>
-              {search? (filteredData.map((val) => (<div class="card"><input id="star1" class="star" type="checkbox" title="bookmark page"/><br/><br/><strong>{val.name}</strong><br/>
-            {val.date}<br/>Category: {val.category}<br/>{val.description}<br/><button type="delete" onClick={() => handleDeleteButton(val.id)}>Delete</button ><button type="edit">Edit</button> </div>))): (events.map((val) => (<div class="card"><input id="star1" class="star" type="checkbox" title="bookmark page"/><br/><br/><strong>{val.name}</strong><br/>
+              {search? (filteredData.map((val) => (<div className="card"><input id="star1" className="star" type="checkbox" title="bookmark page"/><br/><br/><strong>{val.name}</strong><br/>
+            {val.date}<br/>Category: {val.category}<br/>{val.description}<br/><button type="delete" onClick={() => handleDeleteButton(val.id)}>Delete</button ><button type="edit">Edit</button> </div>))): (events.map((val) => (<div className="card"><input id="star1" className="star" type="checkbox" title="bookmark page"/><br/><br/><strong>{val.name}</strong><br/>
             {val.date}<br/>Category: {val.category}<br/>{val.description}<br/><button type="delete" onClick={() => handleDeleteButton(val.id)}>Delete</button ><button type="edit">Edit</button> </div>)))}
               
             </div>

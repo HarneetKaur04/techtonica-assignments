@@ -46,7 +46,7 @@ const AddEvent = ({handleAddEvent}) => {
         <label>Event Name</label>   
           <input
             type="text"
-            id="add-event-name"
+            data-testid="add-event-name"
             value={state.name || ""}
             onChange={(e) =>
               dispatch({
@@ -59,7 +59,7 @@ const AddEvent = ({handleAddEvent}) => {
             <label>Date</label>
           <input
             type="date"
-            id="add-event-date"
+            data-testid="add-event-date"
             value={state.date || ""}
             onChange={(e) =>
               dispatch({

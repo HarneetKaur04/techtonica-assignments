@@ -61,7 +61,7 @@ const Users = () => {
               <form onSubmit={handleSubmit} id="add-user" action="#">
                 <fieldset>
                   <label>Name</label>
-                  <input name="name" value={value.name} onChange={handleInputChange}type="text" id="add-user-name" />
+                  <input name="name" value={value.name} onChange={handleInputChange}type="text" data-testid="add-user-name" />
                   <label>Email</label>
                   <input name="email"
                   value={value.email} onChange={handleInputChange} type="text" id="add-user-email" />
